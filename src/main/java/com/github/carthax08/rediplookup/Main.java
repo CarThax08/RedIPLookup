@@ -18,6 +18,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        saveConfig();
     }
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
@@ -25,6 +26,7 @@ public final class Main extends JavaPlugin {
             List<String> t = getConfig().getStringList("ips");
             t.add(e.getPlayer().getAddress().getAddress().toString());
             getConfig().set("ips", t + ":" + e.getPlayer().getName());
+            saveConfig();
         }
     }
 }
